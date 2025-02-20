@@ -7,6 +7,7 @@ public class Party : MonoBehaviour
 {
     public Castle CastleScript;
     public HeroesLibrary HLib;
+    public Adventure AdventureScript;
     public Hero[] PartyHeroes;
     public int PartyLimit, PartyCount, heroesChoices, partyHP, partyAR;
     public bool[] HeroesInParty;
@@ -15,12 +16,14 @@ public class Party : MonoBehaviour
     public Image[] PartyBackground, PartyPortraitIcon, HeroImage;
     public GameObject[] PartyPortraitObject, HeroObject;
     public Button[] HeroButton;
+    public Button StartButton;
     public int[] HeroID, PartyID;
     public TMPro.TextMeshProUGUI HpValue, ArValue;
 
     public void Open()
     {
         PartyHud.SetActive(true);
+        StartButton.interactable = false;
 
         for (int i = 0; i < 6; i++)
         {
@@ -105,6 +108,10 @@ public class Party : MonoBehaviour
                 else HeroButton[i].interactable = true;
             }
         }
+
+        if (PartyCount > 0)
+            StartButton.interactable = true;
+        else StartButton.interactable = false;
     }
 
     public void RemoveHero(int which)
@@ -128,5 +135,11 @@ public class Party : MonoBehaviour
         }
         PartyCount--;
         DisplayParty();
+    }
+
+    public void StartAdventure()
+    {
+        PartyHud.SetActive(false);
+        AdventureScript.SetAdventure(0);
     }
 }

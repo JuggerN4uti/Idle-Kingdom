@@ -50,6 +50,7 @@ MonoBehaviour:
   AR: 7
   AD: 11
   AS: 1.006
+  dps: 11.066
 --- !u!1 &4720888205355735137
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +101,7 @@ MonoBehaviour:
   AR: 6
   AD: 21
   AS: 0.505
+  dps: 10.605
 --- !u!1 &4914293297921167679
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MonoBehaviour:
   AR: 16
   AD: 15
   AS: 0.616
+  dps: 9.24
 --- !u!1 &5871858088023149267
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +203,7 @@ MonoBehaviour:
   AR: 9
   AD: 17
   AS: 0.567
+  dps: 9.639
 --- !u!1 &5996261112708525344
 GameObject:
   m_ObjectHideFlags: 0
