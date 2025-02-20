@@ -57,6 +57,9 @@ MonoBehaviour:
   - 0.76
   - 0.8
   - 0.6
+  minGold: 07000000090000000200000005000000
+  maxGold: 0d0000000b0000001300000010000000
+  checkDiff: 0
 --- !u!1 &2291032054066354395
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +111,63 @@ MonoBehaviour:
   MobsAD: 08000000
   MobsAS:
   - 0.8
+  minGold: 04000000
+  maxGold: 07000000
+  checkDiff: 0
+--- !u!1 &3896991570602793173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5550718426118037335}
+  - component: {fileID: 8455406569853494069}
+  m_Layer: 0
+  m_Name: Encounter 4 - Boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5550718426118037335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896991570602793173}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4520455766757280469}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8455406569853494069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3896991570602793173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0dc5156271ad54f80a7679e59598a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MobsCount: 1
+  MobsSprites:
+  - {fileID: 21300000, guid: b3fe7b1c187b1b24d81b54f0b168b19a, type: 3}
+  MobsHP: 20030000
+  MobsAD: 10000000
+  MobsAS:
+  - 0.42
+  minGold: 44000000
+  maxGold: 5b000000
+  checkDiff: 0
 --- !u!1 &4967494274158149695
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +201,7 @@ Transform:
   - {fileID: 2082563648172235824}
   - {fileID: 355175818341681681}
   - {fileID: 2646582076621607158}
+  - {fileID: 5550718426118037335}
   m_Father: {fileID: 7479576405196155075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1114364933642061826
@@ -159,6 +220,7 @@ MonoBehaviour:
   - {fileID: 6741347533475963424}
   - {fileID: 9164729500157856006}
   - {fileID: 4379956099328768831}
+  - {fileID: 8455406569853494069}
 --- !u!1 &5930399291825261989
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,3 +321,6 @@ MonoBehaviour:
   MobsAS:
   - 0.64
   - 0.76
+  minGold: 0500000005000000
+  maxGold: 0800000009000000
+  checkDiff: 0

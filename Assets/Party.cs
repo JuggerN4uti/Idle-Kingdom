@@ -51,6 +51,7 @@ public class Party : MonoBehaviour
         for (int i = 0; i < HeroObject.Length; i++)
         {
             HeroObject[i].SetActive(false);
+            HeroButton[i].interactable = true;
         }
 
         for (int i = 0; i < CastleScript.CommonHeroesCollected.Length; i++)

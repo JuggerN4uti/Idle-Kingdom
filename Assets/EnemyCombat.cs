@@ -8,6 +8,7 @@ public class EnemyCombat : MonoBehaviour
     public Adventure AdventureScript;
 
     public int ID, AD;
+    public int[] gold;
     public float HitPoints, MaxHealth, AS, energy;
     bool active;
 
@@ -34,6 +35,8 @@ public class EnemyCombat : MonoBehaviour
         HealthBarFill.fillAmount = 1f;
         AD = EncounterMob.MobsAD[whichMob];
         AS = EncounterMob.MobsAS[whichMob];
+        gold[0] = EncounterMob.minGold[whichMob];
+        gold[1] = EncounterMob.maxGold[whichMob];
         energy = 0f;
         EnergyBarFill.fillAmount = 0f;
         active = false;
@@ -62,6 +65,7 @@ public class EnemyCombat : MonoBehaviour
 
     void Defeated()
     {
+        AdventureScript.GainGold(Random.Range(gold[0], gold[1] + 1));
         AdventureScript.EnemyAlive[ID] = false;
         AdventureScript.MobObject[ID].SetActive(false);
         AdventureScript.mobsCount--;
