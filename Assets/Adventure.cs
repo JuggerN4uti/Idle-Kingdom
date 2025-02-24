@@ -8,6 +8,7 @@ public class Adventure : MonoBehaviour
     public Castle CastleScript;
     public Party PartyScript;
     public StagesLibrary SLib;
+    public Missions MissionsScript;
     public HeroCombat[] Heroes;
     public EnemyCombat[] Enemies;
 
@@ -15,7 +16,7 @@ public class Adventure : MonoBehaviour
     public GameObject[] HeroObject, MobObject;
 
     public int stage, encounter, heroesCount, mobsCount, goldCollected;
-    public float partyHitPoints, partyMaxHealth, partyArmor;
+    public float partyHitPoints, partyMaxHealth, partyArmor, damageMultiplyer;
     public bool[] EnemyAlive;
     public Image HealthBarFill;
     public TMPro.TextMeshProUGUI HealthValue, GoldValue, ResultTitle, GoldSecured;
@@ -28,6 +29,7 @@ public class Adventure : MonoBehaviour
         AdventureHud.SetActive(true);
 
         stage = Stage; encounter = 0; goldCollected = 0;
+        damageMultiplyer = 1f + CastleScript.DamagePercentIncrease * 0.01f;
         GoldValue.text = goldCollected.ToString("0");
         heroesCount = PartyScript.PartyCount;
         mobsCount = SLib.Stages[stage].Encounters[encounter].MobsCount;

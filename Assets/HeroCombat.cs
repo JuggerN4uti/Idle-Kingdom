@@ -51,5 +51,7 @@ public class HeroCombat : MonoBehaviour
         energy -= 1f;
         if (AdventureScript.mobsCount > 0)
             AdventureScript.Enemies[AdventureScript.PossibleTarget()].TakeDamage(AD * 1f);
+        if (AdventureScript.MissionsScript.MissionActive[2])
+            AdventureScript.MissionsScript.ProgressMissionID(2, 1);
     }
 }

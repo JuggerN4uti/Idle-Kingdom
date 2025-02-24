@@ -24,6 +24,7 @@ public class Party : MonoBehaviour
     {
         PartyHud.SetActive(true);
         StartButton.interactable = false;
+        PartyLimit = CastleScript.PartyCount;
 
         for (int i = 0; i < 6; i++)
         {
@@ -41,7 +42,9 @@ public class Party : MonoBehaviour
 
     void DisplayHeroesCollected()
     {
-        PartyCount = 0; heroesChoices = 0; partyHP = 0; partyAR = 0;
+        PartyCount = 0; heroesChoices = 0; partyHP = CastleScript.BonusHealth; partyAR = 0;
+        HpValue.text = partyHP.ToString("0");
+        ArValue.text = partyAR.ToString("0");
 
         for (int i = 0; i < HeroesInParty.Length; i++)
         {

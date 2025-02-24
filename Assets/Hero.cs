@@ -6,5 +6,5 @@ public class Hero : MonoBehaviour
 {
     public Sprite UnitSprite, UnitPortrait;
     public int HP, AR, AD;
-    public float AS, dps;
+    public float AS; //dps;
 }

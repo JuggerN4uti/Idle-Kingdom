@@ -56,6 +56,8 @@ public class EnemyCombat : MonoBehaviour
     public void TakeDamage(float amount)
     {
         //amount /= 1f + partyArmor * 0.01f;
+        amount *= AdventureScript.damageMultiplyer;
+        //Debug.Log(amount);
         HitPoints -= amount;
         HealthBarFill.fillAmount = HitPoints / MaxHealth;
 
@@ -69,6 +71,8 @@ public class EnemyCombat : MonoBehaviour
         AdventureScript.EnemyAlive[ID] = false;
         AdventureScript.MobObject[ID].SetActive(false);
         AdventureScript.mobsCount--;
+        if (AdventureScript.MissionsScript.MissionActive[0])
+            AdventureScript.MissionsScript.ProgressMissionID(0, 1);
         if (AdventureScript.mobsCount <= 0)
             AdventureScript.EncounterCleared();
     }

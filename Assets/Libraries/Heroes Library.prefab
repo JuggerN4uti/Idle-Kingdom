@@ -48,9 +48,8 @@ MonoBehaviour:
   UnitPortrait: {fileID: 21300000, guid: 339e433f735419d4eabe685e07e9b865, type: 3}
   HP: 81
   AR: 7
-  AD: 11
-  AS: 1.006
-  dps: 11.066
+  AD: 12
+  AS: 0.922
 --- !u!1 &4720888205355735137
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,9 +98,8 @@ MonoBehaviour:
   UnitPortrait: {fileID: 21300000, guid: 6c7e963a1ddade449a2d31948278e585, type: 3}
   HP: 88
   AR: 6
-  AD: 21
-  AS: 0.505
-  dps: 10.605
+  AD: 24
+  AS: 0.442
 --- !u!1 &4914293297921167679
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +148,8 @@ MonoBehaviour:
   UnitPortrait: {fileID: 21300000, guid: bf431cfb7a63b18429c7064a3947e866, type: 3}
   HP: 92
   AR: 16
-  AD: 15
-  AS: 0.616
-  dps: 9.24
+  AD: 17
+  AS: 0.544
 --- !u!1 &5871858088023149267
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,9 +198,8 @@ MonoBehaviour:
   UnitPortrait: {fileID: 21300000, guid: d6c14e9f92f1cbb4798127a3a72e408a, type: 3}
   HP: 95
   AR: 9
-  AD: 17
-  AS: 0.567
-  dps: 9.639
+  AD: 19
+  AS: 0.507
 --- !u!1 &5996261112708525344
 GameObject:
   m_ObjectHideFlags: 0
