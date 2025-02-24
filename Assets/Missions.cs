@@ -16,7 +16,7 @@ public class Missions : MonoBehaviour
     public int[] MissionProgress, MissionRequirement;
     public bool[] MissionCompleted;
     public TMPro.TextMeshProUGUI[] MissionText, MissionProgressText;
-    public Image[] MissionBackground;
+    public Image[] MissionProgressFill;
 
     public void NewMissionSlot()
     {
@@ -29,7 +29,7 @@ public class Missions : MonoBehaviour
     {
         MissionID[which] = MLib.RollMission();
         MissionCompleted[which] = false;
-        MissionBackground[which].color = new Color(0.345f, 0.325f, 0.451f, 1f);
+        MissionProgressFill[which].fillAmount = 0f;
         MissionActive[MissionID[which]] = true;
         MissionText[which].text = MLib.missionText[MissionID[which]];
         MissionProgress[which] = 0;
@@ -50,11 +50,12 @@ public class Missions : MonoBehaviour
     {
         MissionProgress[I] += amount;
         MissionProgressText[I].text = MissionProgress[I].ToString("0") + "/" + MissionRequirement[I].ToString("0");
+        MissionProgressFill[I].fillAmount = (MissionProgress[I] * 1f) / (MissionRequirement[I] * 1f);
         if (MissionProgress[I] >= MissionRequirement[I])
         {
             MissionProgressText[I].text = MissionRequirement[I].ToString("0") + "/" + MissionRequirement[I].ToString("0");
             MissionCompleted[I] = true;
-            MissionBackground[I].color = new Color(0.259f, 0.541f, 0.302f, 1f);
+            MissionProgressFill[I].fillAmount = 1f;
         }
     }
 }
