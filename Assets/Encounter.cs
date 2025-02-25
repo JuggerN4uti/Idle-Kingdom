@@ -28,15 +28,15 @@ public class Encounter : MonoBehaviour
         {
             temp += MobsHP[i];
         }
-        Debug.Log("HP = " + temp);
+        //Debug.Log("HP = " + temp);
 
         for (int i = 0; i < MobsCount; i++)
         {
             temp2 += MobsAD[i] * MobsAS[i];
         }
-        Debug.Log("DPS = " + temp);
+        //Debug.Log("DPS = " + temp);
         temp *= temp2;
-        temp /= 0.75f + 0.25f * MobsCount;
+        temp /= 0.8f + 0.2f * MobsCount;
         Debug.Log("Diff = " + temp);
     }
 }

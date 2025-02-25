@@ -18,4 +18,9 @@ public class MissionsLibrary : MonoBehaviour
         } while (!viableMission[roll]);
         return roll;
     }
+
+    public void UnlockMission(int which)
+    {
+        viableMission[which] = true;
+    }
 }

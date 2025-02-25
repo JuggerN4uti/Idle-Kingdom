@@ -59,7 +59,7 @@ public class Party : MonoBehaviour
 
         for (int i = 0; i < CastleScript.CommonHeroesCollected.Length; i++)
         {
-            if (CastleScript.CommonHeroesCollected[i] > 0)
+            if (CastleScript.CommonHeroUnlocked[i])
             {
                 HeroObject[heroesChoices].SetActive(true);
                 HeroImage[heroesChoices].sprite = HLib.CommonHeroes[i].UnitPortrait;

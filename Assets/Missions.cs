@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Missions : MonoBehaviour
 {
     public MissionsLibrary MLib;
+    public Castle CastleScript;
 
     public int MissionsCount;
     public GameObject[] MissionWindow;
@@ -17,6 +18,10 @@ public class Missions : MonoBehaviour
     public bool[] MissionCompleted;
     public TMPro.TextMeshProUGUI[] MissionText, MissionProgressText;
     public Image[] MissionProgressFill;
+    public Button[] MissionButton;
+
+    [Header("Missions")]
+    public int missionsCompleted;
 
     public void NewMissionSlot()
     {
@@ -29,11 +34,12 @@ public class Missions : MonoBehaviour
     {
         MissionID[which] = MLib.RollMission();
         MissionCompleted[which] = false;
+        MissionButton[which].interactable = false;
         MissionProgressFill[which].fillAmount = 0f;
         MissionActive[MissionID[which]] = true;
         MissionText[which].text = MLib.missionText[MissionID[which]];
         MissionProgress[which] = 0;
-        MissionRequirement[which] = MLib.missionBaseRequirement[MissionID[which]];
+        MissionRequirement[which] = MLib.missionBaseRequirement[MissionID[which]] * (16 + missionsCompleted) / 16;
         MissionProgressText[which].text = MissionProgress[which].ToString("0") + "/" + MissionRequirement[which].ToString("0");
     }
 
@@ -55,7 +61,16 @@ public class Missions : MonoBehaviour
         {
             MissionProgressText[I].text = MissionRequirement[I].ToString("0") + "/" + MissionRequirement[I].ToString("0");
             MissionCompleted[I] = true;
+            MissionButton[I].interactable = true;
             MissionProgressFill[I].fillAmount = 1f;
         }
+    }
+
+    public void CompleteMission(int which)
+    {
+        CastleScript.GainStars(1 + missionsCompleted / 12);
+        CastleScript.GetAChest();
+        missionsCompleted++;
+        SetMission(which);
     }
 }

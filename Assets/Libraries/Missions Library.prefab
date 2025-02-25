@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318c0335511b11e469c924618b193724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viableMission: 010101
+  viableMission: 01010100
   missionText:
   - Slain Monsters
   - Collect Gold
   - Use Attack
-  missionBaseRequirement: 03000000140000000c000000
+  - Collect Lumber
+  missionBaseRequirement: 03000000140000000c00000010000000

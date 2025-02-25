@@ -42,7 +42,7 @@ public class HeroPick : MonoBehaviour
 
     public void ChooseHero(int which)
     {
-        CastleScript.CommonHeroesCollected[roll[which]]++;
+        CastleScript.CollectCommonHero(roll[which]);
         PickHud.SetActive(false);
     }
 }

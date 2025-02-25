@@ -46,17 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MobsCount: 4
   MobsSprites:
+  - {fileID: 21300000, guid: e8331a743d2d1dd499000e9fdd38b0ad, type: 3}
+  - {fileID: 21300000, guid: 1f457560f948c39438269935b3d899bc, type: 3}
   - {fileID: 21300000, guid: ac68bee66582d9741b0537f57b29fced, type: 3}
   - {fileID: 21300000, guid: 0da3578c5293be4408dd91a24e29ecbd, type: 3}
-  - {fileID: 21300000, guid: 1f457560f948c39438269935b3d899bc, type: 3}
-  - {fileID: 21300000, guid: e8331a743d2d1dd499000e9fdd38b0ad, type: 3}
-  MobsHP: 4c000000480000005000000060000000
+  MobsHP: 45000000410000004700000056000000
   MobsAD: 09000000080000000800000008000000
   MobsAS:
-  - 0.64
-  - 0.76
-  - 0.8
-  - 0.6
+  - 0.57
+  - 0.58
+  - 0.72
+  - 0.55
   minGold: 07000000090000000200000005000000
   maxGold: 0d0000000b0000001300000010000000
   checkDiff: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   MobsHP: 50000000
   MobsAD: 08000000
   MobsAS:
-  - 0.8
+  - 0.78
   minGold: 04000000
   maxGold: 07000000
   checkDiff: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   MobsCount: 1
   MobsSprites:
   - {fileID: 21300000, guid: b3fe7b1c187b1b24d81b54f0b168b19a, type: 3}
-  MobsHP: 20030000
+  MobsHP: e8030000
   MobsAD: 10000000
   MobsAS:
   - 0.42
@@ -316,11 +316,11 @@ MonoBehaviour:
   MobsSprites:
   - {fileID: 21300000, guid: ac68bee66582d9741b0537f57b29fced, type: 3}
   - {fileID: 21300000, guid: 0da3578c5293be4408dd91a24e29ecbd, type: 3}
-  MobsHP: 4c00000048000000
+  MobsHP: 4500000040000000
   MobsAD: 0900000008000000
   MobsAS:
-  - 0.64
-  - 0.76
+  - 0.61
+  - 0.72
   minGold: 0500000005000000
   maxGold: 0800000009000000
   checkDiff: 0
