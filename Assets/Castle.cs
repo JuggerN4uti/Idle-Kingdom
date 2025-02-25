@@ -7,8 +7,6 @@ public class Castle : MonoBehaviour
 {
     public Party PartyScript;
     public Missions MissionsScript;
-    public bool[] CommonHeroUnlocked;
-    public int[] CommonHeroesCollected;
     public TMPro.TextMeshProUGUI GoldValue, LumberValue;
 
     [Header("Resources")]
@@ -28,6 +26,12 @@ public class Castle : MonoBehaviour
     [Header("Windows")]
     public GameObject[] WindowObject;
 
+    [Header("Army")]
+    public bool[] CommonHeroUnlocked;
+    public int[] CommonHeroesCollected, CommonHeroLevel;
+    public Image[] CommonHeroImage, CommonHeroProgressFill;
+    public TMPro.TextMeshProUGUI[] CommonHeroLevelText, CommonHeroProgressText;
+
     [Header("Kings Upgrades")]
     public int[] StarsCosts;
     public int StarsSpent;
@@ -42,8 +46,16 @@ public class Castle : MonoBehaviour
     public void CollectCommonHero(int HeroID)
     {
         if (!CommonHeroUnlocked[HeroID])
+        {
             CommonHeroUnlocked[HeroID] = true;
+            CommonHeroImage[HeroID].color = new Color(1f, 1f, 1f, 1f);
+            CommonHeroLevel[HeroID] = 1;
+            CommonHeroLevelText[HeroID].text = CommonHeroLevel[HeroID].ToString("0");
+        }
         else CommonHeroesCollected[HeroID]++;
+
+        CommonHeroProgressText[HeroID].text = CommonHeroesCollected[HeroID].ToString("0") + "/" + (CommonHeroLevel[HeroID] + 1).ToString("0");
+        CommonHeroProgressFill[HeroID].fillAmount = (CommonHeroesCollected[HeroID] * 1f) / ((CommonHeroLevel[HeroID] + 1) * 1f);
     }
 
     public void GainGold(int amount)
@@ -89,6 +101,7 @@ public class Castle : MonoBehaviour
 
     public void OpenChest()
     {
+        CollectCommonHero(Random.Range(0, 4));
         ChestsStored--;
         if (ChestsStored == 0)
             ChestButton.interactable = false;
@@ -107,6 +120,10 @@ public class Castle : MonoBehaviour
             WindowObject[which].SetActive(false);
         else // potem jak bêdzie wiêcej okien
         {
+            for (int i = 0; i < WindowObject.Length; i++)
+            {
+                WindowObject[i].SetActive(false);
+            }
             WindowObject[which].SetActive(true);
             UpdateWindow(which);
         }
@@ -114,15 +131,22 @@ public class Castle : MonoBehaviour
 
     void UpdateWindow(int which)
     {
-        if (Stars >= StarsCosts[0] - StarsSpent / 5)
-            KingUpgradeButton[0].interactable = true;
-        else KingUpgradeButton[0].interactable = false;
-
-        for (int i = 1; i < KingUpgradeButton.Length; i++)
+        switch (which)
         {
-            if (Stars >= StarsCosts[i])
-                KingUpgradeButton[i].interactable = true;
-            else KingUpgradeButton[i].interactable = false;
+            case 0:
+                if (Stars >= StarsCosts[0] - StarsSpent / 5)
+                    KingUpgradeButton[0].interactable = true;
+                else KingUpgradeButton[0].interactable = false;
+
+                for (int i = 1; i < KingUpgradeButton.Length; i++)
+                {
+                    if (Stars >= StarsCosts[i])
+                        KingUpgradeButton[i].interactable = true;
+                    else KingUpgradeButton[i].interactable = false;
+                }
+                break;
+            case 1:
+                break;
         }
     }
 
@@ -156,7 +180,7 @@ public class Castle : MonoBehaviour
         }
         UpgradeCostText[0].text = (StarsCosts[0] - StarsSpent / 5).ToString("0");
         UpgradeCostText[which].text = StarsCosts[which].ToString("0");
-        UpdateWindow(which);
+        UpdateWindow(0);
     }
 
     public void SetLumberjackCamp(float lumberGain)
