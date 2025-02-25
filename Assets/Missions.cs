@@ -22,6 +22,7 @@ public class Missions : MonoBehaviour
 
     [Header("Missions")]
     public int missionsCompleted;
+    public int instantPercent;
 
     public void NewMissionSlot()
     {
@@ -35,12 +36,12 @@ public class Missions : MonoBehaviour
         MissionID[which] = MLib.RollMission();
         MissionCompleted[which] = false;
         MissionButton[which].interactable = false;
-        MissionProgressFill[which].fillAmount = 0f;
         MissionActive[MissionID[which]] = true;
         MissionText[which].text = MLib.missionText[MissionID[which]];
-        MissionProgress[which] = 0;
         MissionRequirement[which] = MLib.missionBaseRequirement[MissionID[which]] * (16 + missionsCompleted) / 16;
+        MissionProgress[which] = (MissionRequirement[which] * instantPercent) / 100;
         MissionProgressText[which].text = MissionProgress[which].ToString("0") + "/" + MissionRequirement[which].ToString("0");
+        MissionProgressFill[which].fillAmount = (MissionProgress[which] * 1f) / (MissionRequirement[which] * 1f);
     }
 
     public void ProgressMissionID(int ID, int count)

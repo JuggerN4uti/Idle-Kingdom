@@ -17,7 +17,7 @@ public class Party : MonoBehaviour
     public GameObject[] PartyPortraitObject, HeroObject;
     public Button[] HeroButton;
     public Button StartButton;
-    public int[] HeroID, PartyID;
+    public int[] HeroID, PartyID, HeroLevel;
     public TMPro.TextMeshProUGUI HpValue, ArValue;
 
     public void Open()
@@ -64,6 +64,7 @@ public class Party : MonoBehaviour
                 HeroObject[heroesChoices].SetActive(true);
                 HeroImage[heroesChoices].sprite = HLib.CommonHeroes[i].UnitPortrait;
                 HeroID[heroesChoices] = i;
+                HeroLevel[heroesChoices] = CastleScript.CommonHeroLevel[i];
                 heroesChoices++;
             }
         }
@@ -74,9 +75,9 @@ public class Party : MonoBehaviour
         HeroesInParty[HeroID[which]] = true;
         PartyID[PartyCount] = HeroID[which];
         PartyHeroes[PartyCount] = HLib.CommonHeroes[HeroID[which]];
-        partyHP += PartyHeroes[PartyCount].HP;
+        partyHP += PartyHeroes[PartyCount].TotalHP(HeroLevel[PartyCount]);
         HpValue.text = partyHP.ToString("0");
-        partyAR += PartyHeroes[PartyCount].AR;
+        partyAR += PartyHeroes[PartyCount].TotalAR(HeroLevel[PartyCount]);
         ArValue.text = partyAR.ToString("0");
         PartyCount++;
 
@@ -121,9 +122,9 @@ public class Party : MonoBehaviour
     public void RemoveHero(int which)
     {
         HeroesInParty[PartyID[which]] = false;
-        partyHP -= PartyHeroes[which].HP;
+        partyHP -= PartyHeroes[which].TotalHP(HeroLevel[which]);
         HpValue.text = partyHP.ToString("0");
-        partyAR -= PartyHeroes[which].AR;
+        partyAR -= PartyHeroes[which].TotalAR(HeroLevel[which]);
         ArValue.text = partyAR.ToString("0");
 
         if (which == PartyCount - 1)

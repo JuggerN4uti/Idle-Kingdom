@@ -50,4 +50,4 @@ MonoBehaviour:
   - Collect Gold
   - Use Attack
   - Collect Lumber
-  missionBaseRequirement: 03000000140000000c00000010000000
+  missionBaseRequirement: 030000000e0000000c0000000b000000

@@ -31,6 +31,7 @@ public class Castle : MonoBehaviour
     public int[] CommonHeroesCollected, CommonHeroLevel;
     public Image[] CommonHeroImage, CommonHeroProgressFill;
     public TMPro.TextMeshProUGUI[] CommonHeroLevelText, CommonHeroProgressText;
+    public Button[] CommonHeroLevelUpButton;
 
     [Header("Kings Upgrades")]
     public int[] StarsCosts;
@@ -54,8 +55,7 @@ public class Castle : MonoBehaviour
         }
         else CommonHeroesCollected[HeroID]++;
 
-        CommonHeroProgressText[HeroID].text = CommonHeroesCollected[HeroID].ToString("0") + "/" + (CommonHeroLevel[HeroID] + 1).ToString("0");
-        CommonHeroProgressFill[HeroID].fillAmount = (CommonHeroesCollected[HeroID] * 1f) / ((CommonHeroLevel[HeroID] + 1) * 1f);
+        CheckHero(HeroID);
     }
 
     public void GainGold(int amount)
@@ -193,5 +193,30 @@ public class Castle : MonoBehaviour
     {
         GainLumber(1);
         Invoke("ChopTree", 1f / LumberPerSecond);
+    }
+
+    void CheckHero(int which)
+    {
+        CommonHeroProgressText[which].text = CommonHeroesCollected[which].ToString("0") + "/" + (CommonHeroLevel[which] + 1).ToString("0");
+        CommonHeroProgressFill[which].fillAmount = (CommonHeroesCollected[which] * 1f) / ((CommonHeroLevel[which] + 1) * 1f);
+        if (CommonHeroesCollected[which] >= CommonHeroLevel[which] + 1)
+        {
+            CommonHeroProgressFill[which].color = new Color(0.1f, 1f, 0.1f, 1f);
+            CommonHeroLevelUpButton[which].interactable = true;
+        }
+        else
+        {
+            CommonHeroProgressFill[which].color = new Color(1f, 1f, 1f, 1f);
+            CommonHeroLevelUpButton[which].interactable = false;
+        }
+    }
+
+    public void LevelUpHero(int which)
+    {
+        CommonHeroLevel[which]++;
+        CommonHeroesCollected[which] -= CommonHeroLevel[which];
+        CommonHeroLevelText[which].text = CommonHeroLevel[which].ToString("0");
+        CheckHero(which);
+        GainStars(1 + CommonHeroLevel[which] / 3);
     }
 }

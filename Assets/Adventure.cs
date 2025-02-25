@@ -46,7 +46,7 @@ public class Adventure : MonoBehaviour
         for (int i = 0; i < heroesCount; i++)
         {
             HeroObject[i].SetActive(true);
-            Heroes[i].SetHero(PartyScript.PartyHeroes[i]);
+            Heroes[i].SetHero(PartyScript.PartyHeroes[i], PartyScript.HeroLevel[i]);
         }
 
         SetEnemies();

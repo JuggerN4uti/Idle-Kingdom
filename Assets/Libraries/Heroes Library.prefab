@@ -50,6 +50,10 @@ MonoBehaviour:
   AR: 7
   AD: 12
   AS: 0.922
+  hpGain: 3.98
+  arGain: 0.4
+  adGain: 0.42
+  asGain: 0.0056
 --- !u!1 &4720888205355735137
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +104,10 @@ MonoBehaviour:
   AR: 6
   AD: 24
   AS: 0.442
+  hpGain: 4
+  arGain: 0.46
+  adGain: 0.84
+  asGain: 0.0062
 --- !u!1 &4914293297921167679
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +158,10 @@ MonoBehaviour:
   AR: 16
   AD: 17
   AS: 0.544
+  hpGain: 3.1
+  arGain: 0.58
+  adGain: 0.46
+  asGain: 0.006
 --- !u!1 &5871858088023149267
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,6 +212,10 @@ MonoBehaviour:
   AR: 9
   AD: 19
   AS: 0.507
+  hpGain: 4.14
+  arGain: 0.42
+  adGain: 0.72
+  asGain: 0.006
 --- !u!1 &5996261112708525344
 GameObject:
   m_ObjectHideFlags: 0
