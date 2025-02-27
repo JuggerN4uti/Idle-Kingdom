@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2646582076621607158}
   - component: {fileID: 4379956099328768831}
   m_Layer: 0
-  m_Name: Encounter 3
+  m_Name: Encounter 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,19 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MobsCount: 4
   MobsSprites:
+  - {fileID: 21300000, guid: ac68bee66582d9741b0537f57b29fced, type: 3}
   - {fileID: 21300000, guid: e8331a743d2d1dd499000e9fdd38b0ad, type: 3}
   - {fileID: 21300000, guid: 1f457560f948c39438269935b3d899bc, type: 3}
-  - {fileID: 21300000, guid: ac68bee66582d9741b0537f57b29fced, type: 3}
   - {fileID: 21300000, guid: 0da3578c5293be4408dd91a24e29ecbd, type: 3}
-  MobsHP: 45000000410000004700000056000000
-  MobsAD: 09000000080000000800000008000000
+  MobsHP: 3c00000039000000400000004f000000
+  MobsAD: 09000000080000000700000006000000
   MobsAS:
-  - 0.57
-  - 0.58
-  - 0.72
-  - 0.55
-  minGold: 07000000090000000200000005000000
-  maxGold: 0d0000000b0000001300000010000000
+  - 0.44
+  - 0.47
+  - 0.67
+  - 0.6
+  minGold: 04000000030000000300000003000000
+  maxGold: 04000000040000000300000003000000
   checkDiff: 0
 --- !u!1 &2291032054066354395
 GameObject:
@@ -111,8 +111,66 @@ MonoBehaviour:
   MobsAD: 08000000
   MobsAS:
   - 0.78
-  minGold: 04000000
+  minGold: 05000000
   maxGold: 07000000
+  checkDiff: 0
+--- !u!1 &2814923285047911538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506888425510835710}
+  - component: {fileID: 2730719474515784734}
+  m_Layer: 0
+  m_Name: Encounter 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506888425510835710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814923285047911538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4520455766757280469}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2730719474515784734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2814923285047911538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0dc5156271ad54f80a7679e59598a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MobsCount: 3
+  MobsSprites:
+  - {fileID: 21300000, guid: e8331a743d2d1dd499000e9fdd38b0ad, type: 3}
+  - {fileID: 21300000, guid: 1f457560f948c39438269935b3d899bc, type: 3}
+  - {fileID: 21300000, guid: 0da3578c5293be4408dd91a24e29ecbd, type: 3}
+  MobsHP: 3e0000003900000038000000
+  MobsAD: 080000000700000006000000
+  MobsAS:
+  - 0.6
+  - 0.7
+  - 0.78
+  minGold: 020000000200000002000000
+  maxGold: 060000000600000005000000
   checkDiff: 0
 --- !u!1 &3896991570602793173
 GameObject:
@@ -125,7 +183,7 @@ GameObject:
   - component: {fileID: 5550718426118037335}
   - component: {fileID: 8455406569853494069}
   m_Layer: 0
-  m_Name: Encounter 4 - Boss
+  m_Name: Encounter 5 - Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,12 +219,12 @@ MonoBehaviour:
   MobsCount: 1
   MobsSprites:
   - {fileID: 21300000, guid: b3fe7b1c187b1b24d81b54f0b168b19a, type: 3}
-  MobsHP: e8030000
+  MobsHP: bb030000
   MobsAD: 10000000
   MobsAS:
-  - 0.42
-  minGold: 44000000
-  maxGold: 5b000000
+  - 0.36
+  minGold: 0d000000
+  maxGold: 16000000
   checkDiff: 0
 --- !u!1 &4967494274158149695
 GameObject:
@@ -200,6 +258,7 @@ Transform:
   m_Children:
   - {fileID: 2082563648172235824}
   - {fileID: 355175818341681681}
+  - {fileID: 1506888425510835710}
   - {fileID: 2646582076621607158}
   - {fileID: 5550718426118037335}
   m_Father: {fileID: 7479576405196155075}
@@ -219,6 +278,7 @@ MonoBehaviour:
   Encounters:
   - {fileID: 6741347533475963424}
   - {fileID: 9164729500157856006}
+  - {fileID: 2730719474515784734}
   - {fileID: 4379956099328768831}
   - {fileID: 8455406569853494069}
 --- !u!1 &5930399291825261989
@@ -316,11 +376,11 @@ MonoBehaviour:
   MobsSprites:
   - {fileID: 21300000, guid: ac68bee66582d9741b0537f57b29fced, type: 3}
   - {fileID: 21300000, guid: 0da3578c5293be4408dd91a24e29ecbd, type: 3}
-  MobsHP: 4500000040000000
-  MobsAD: 0900000008000000
+  MobsHP: 430000003e000000
+  MobsAD: 0800000007000000
   MobsAS:
-  - 0.61
-  - 0.72
-  minGold: 0500000005000000
-  maxGold: 0800000009000000
+  - 0.62
+  - 0.76
+  minGold: 0300000002000000
+  maxGold: 0700000006000000
   checkDiff: 0

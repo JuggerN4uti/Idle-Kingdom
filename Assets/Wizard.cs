@@ -15,6 +15,8 @@ public class Wizard : MonoBehaviour
     [Header("Level")]
     public int level;
     public int experience, experienceRequired;
+    public TMPro.TextMeshProUGUI LevelValue;
+    public Image ExperienceBarFill;
 
     [Header("UI")]
     public TMPro.TextMeshProUGUI ManaValue;
@@ -59,7 +61,7 @@ public class Wizard : MonoBehaviour
 
     public void SummonHero()
     {
-        CastleScript.CollectCommonHero(Random.Range(0, 4));
+        CastleScript.CollectCommonHero(Random.Range(0, 5));
         SpendMana(75f);
     }
 
@@ -77,13 +79,15 @@ public class Wizard : MonoBehaviour
         experience += amount;
         if (experience >= experienceRequired)
             LevelUp();
+        ExperienceBarFill.fillAmount = (experience * 1f) / (experienceRequired * 1f);
     }
 
     void LevelUp()
     {
         level++;
+        LevelValue.text = level.ToString("0");
         experience -= experienceRequired;
-        maxMana += 10;
+        maxMana += 30;
         manaRegen += 0.1f;
         manaPerClick += 0.01f;
         experienceRequired = NextLevelExp();

@@ -266,6 +266,7 @@ MonoBehaviour:
   - {fileID: 2752083671576958323}
   - {fileID: 5487902587041341527}
   - {fileID: 1101465332920023567}
+  - {fileID: 4946199610172446348}
 --- !u!1 &6618323433047941575
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,5 +300,60 @@ Transform:
   - {fileID: 3519517221231196622}
   - {fileID: 116411946610337980}
   - {fileID: 682829690886103581}
+  - {fileID: 7210793064383262514}
   m_Father: {fileID: 5101828350911116684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7649409735951128879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7210793064383262514}
+  - component: {fileID: 4946199610172446348}
+  m_Layer: 0
+  m_Name: Cutthroat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7210793064383262514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649409735951128879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 880628610747790702}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4946199610172446348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649409735951128879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257885c584bbf8a498493fbc49e27744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitSprite: {fileID: 21300000, guid: 7baa0e7c0ccd10e4da8154a0e65b9789, type: 3}
+  UnitPortrait: {fileID: 21300000, guid: dd4528443f307cf45bc3fd4d010e0ce9, type: 3}
+  HP: 85
+  AR: 8
+  AD: 15
+  AS: 0.715
+  hpGain: 3.76
+  arGain: 0.48
+  adGain: 0.54
+  asGain: 0.006

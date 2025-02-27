@@ -11,7 +11,7 @@ public class Castle : MonoBehaviour
 
     [Header("Resources")]
     public int Gold;
-    public int Lumber, GoldPer10Second;
+    public int fifthOfGold, Lumber, GoldPer10Second;
     public float LumberPerSecond;
 
     [Header("Chests")]
@@ -41,7 +41,7 @@ public class Castle : MonoBehaviour
 
     void Start()
     {
-        Invoke("PassiveGold", 10f);
+        Invoke("PassiveGold", 2f);
     }
 
     public void StartAdventure()
@@ -80,8 +80,13 @@ public class Castle : MonoBehaviour
 
     void PassiveGold()
     {
-        GainGold(GoldPer10Second);
-        Invoke("PassiveGold", 10f);
+        fifthOfGold += GoldPer10Second;
+        if (fifthOfGold >= 5)
+        {
+            GainGold(fifthOfGold / 5);
+            fifthOfGold = fifthOfGold % 5;
+        }
+        Invoke("PassiveGold", 2f);
     }
 
     public void GainLumber(int amount)
