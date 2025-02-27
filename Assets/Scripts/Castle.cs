@@ -11,7 +11,7 @@ public class Castle : MonoBehaviour
 
     [Header("Resources")]
     public int Gold;
-    public int Stars, Lumber;
+    public int Lumber, GoldPer10Second;
     public float LumberPerSecond;
 
     [Header("Chests")]
@@ -34,10 +34,15 @@ public class Castle : MonoBehaviour
     public Button[] CommonHeroLevelUpButton;
 
     [Header("Kings Upgrades")]
-    public int[] StarsCosts;
-    public int StarsSpent;
+    public int[] UpgradeCosts;
+    public int GoldSpentOnUpgrades;
     public Button[] KingUpgradeButton;
     public TMPro.TextMeshProUGUI[] UpgradeCostText;
+
+    void Start()
+    {
+        Invoke("PassiveGold", 10f);
+    }
 
     public void StartAdventure()
     {
@@ -52,6 +57,7 @@ public class Castle : MonoBehaviour
             CommonHeroImage[HeroID].color = new Color(1f, 1f, 1f, 1f);
             CommonHeroLevel[HeroID] = 1;
             CommonHeroLevelText[HeroID].text = CommonHeroLevel[HeroID].ToString("0");
+            GoldPer10Second++;
         }
         else CommonHeroesCollected[HeroID]++;
 
@@ -72,16 +78,10 @@ public class Castle : MonoBehaviour
         GoldValue.text = Gold.ToString("0");
     }
 
-    public void GainStars(int amount)
+    void PassiveGold()
     {
-        Stars += amount;
-        //GoldValue.text = Gold.ToString("0");
-    }
-
-    public void SpendStars(int amount)
-    {
-        Stars -= amount;
-        //GoldValue.text = Gold.ToString("0");
+        GainGold(GoldPer10Second);
+        Invoke("PassiveGold", 10f);
     }
 
     public void GainLumber(int amount)
@@ -134,13 +134,13 @@ public class Castle : MonoBehaviour
         switch (which)
         {
             case 0:
-                if (Stars >= StarsCosts[0] - StarsSpent / 5)
+                if (Gold >= UpgradeCosts[0] - GoldSpentOnUpgrades / 5)
                     KingUpgradeButton[0].interactable = true;
                 else KingUpgradeButton[0].interactable = false;
 
                 for (int i = 1; i < KingUpgradeButton.Length; i++)
                 {
-                    if (Stars >= StarsCosts[i])
+                    if (Gold >= UpgradeCosts[i])
                         KingUpgradeButton[i].interactable = true;
                     else KingUpgradeButton[i].interactable = false;
                 }
@@ -154,32 +154,32 @@ public class Castle : MonoBehaviour
     {
         if (which == 0)
         {
-            SpendStars(StarsCosts[which] - StarsSpent / 5);
-            StarsSpent = StarsSpent % 5;
+            SpendGold(UpgradeCosts[which] - GoldSpentOnUpgrades / 5);
+            GoldSpentOnUpgrades = GoldSpentOnUpgrades % 5;
         }
         else
         {
-            SpendStars(StarsCosts[which]);
-            StarsSpent += StarsCosts[which];
+            SpendGold(UpgradeCosts[which]);
+            GoldSpentOnUpgrades += UpgradeCosts[which];
         }
 
         switch (which)
         {
             case 0:
-                StarsCosts[0] *= 4;
+                UpgradeCosts[0] *= 4;
                 PartyCount++;
                 break;
             case 1:
-                StarsCosts[1]++;
+                UpgradeCosts[1] += 10;
                 BonusHealth += 12;
                 break;
             case 2:
-                StarsCosts[2]++;
+                UpgradeCosts[2] += 10;
                 DamagePercentIncrease += 2;
                 break;
         }
-        UpgradeCostText[0].text = (StarsCosts[0] - StarsSpent / 5).ToString("0");
-        UpgradeCostText[which].text = StarsCosts[which].ToString("0");
+        UpgradeCostText[0].text = (UpgradeCosts[0] - GoldSpentOnUpgrades / 5).ToString("0");
+        UpgradeCostText[which].text = UpgradeCosts[which].ToString("0");
         UpdateWindow(0);
     }
 
@@ -217,6 +217,7 @@ public class Castle : MonoBehaviour
         CommonHeroesCollected[which] -= CommonHeroLevel[which];
         CommonHeroLevelText[which].text = CommonHeroLevel[which].ToString("0");
         CheckHero(which);
-        GainStars(1 + CommonHeroLevel[which] / 3);
+        GainGold(CommonHeroLevel[which]);
+        GoldPer10Second++;
     }
 }

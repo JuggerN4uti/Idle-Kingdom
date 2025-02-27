@@ -7,6 +7,7 @@ public class Missions : MonoBehaviour
 {
     public MissionsLibrary MLib;
     public Castle CastleScript;
+    public Wizard WizardScript;
 
     public int MissionsCount;
     public GameObject[] MissionWindow;
@@ -69,8 +70,8 @@ public class Missions : MonoBehaviour
 
     public void CompleteMission(int which)
     {
-        CastleScript.GainStars(1 + missionsCompleted / 12);
-        CastleScript.GetAChest();
+        WizardScript.GainExp(1 + missionsCompleted / 9);
+        //CastleScript.GetAChest();
         missionsCompleted++;
         SetMission(which);
     }
