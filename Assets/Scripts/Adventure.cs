@@ -21,7 +21,7 @@ public class Adventure : MonoBehaviour
     public Image HealthBarFill;
     public TMPro.TextMeshProUGUI HealthValue, GoldValue, ResultTitle, GoldSecured;
 
-    int roll;
+    public int roll;
     float temp;
 
     public void SetAdventure(int Stage)
@@ -46,7 +46,7 @@ public class Adventure : MonoBehaviour
         for (int i = 0; i < heroesCount; i++)
         {
             HeroObject[i].SetActive(true);
-            Heroes[i].SetHero(PartyScript.PartyHeroes[i], CastleScript.CommonHeroLevel[PartyScript.PartyID[i]]);
+            Heroes[i].SetHero(PartyScript.PartyHeroes[i], PartyScript.HeroLevel[PartyScript.PartyID[i]]);
         }
 
         SetEnemies();
@@ -99,6 +99,14 @@ public class Adventure : MonoBehaviour
 
         if (partyHitPoints <= 0f)
             PartyDefeated();
+    }
+
+    public void GainHP(float amount)
+    {
+        partyMaxHealth += amount;
+        partyHitPoints += amount;
+        HealthValue.text = partyHitPoints.ToString("0") + "/" + partyMaxHealth.ToString("0");
+        HealthBarFill.fillAmount = partyHitPoints / partyMaxHealth;
     }
 
     void PartyDefeated()
@@ -156,5 +164,28 @@ public class Adventure : MonoBehaviour
         CastleScript.GainGold(goldCollected);
 
         ResultsHud.SetActive(false);
+    }
+
+    public float PartyAD()
+    {
+        temp = 0f;
+        for (int i = 0; i < heroesCount; i++)
+        {
+            temp += Heroes[i].AD;
+        }
+        return temp;
+    }
+
+    public void Standard()
+    {
+        Invoke("StandardCast", 0.1f);
+    }
+
+    void StandardCast()
+    {
+        for (int i = 0; i < heroesCount; i++)
+        {
+            Heroes[i].AS += 0.07f;
+        }
     }
 }

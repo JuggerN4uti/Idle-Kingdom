@@ -7,10 +7,14 @@ public class Wizard : MonoBehaviour
 {
     [Header("Scripts")]
     public Castle CastleScript;
+    public HeroesLibrary HLib;
 
     [Header("Mana")]
     public float mana;
     public float maxMana, manaRegen, manaPerClick;
+
+    [Header("Summons")]
+    public int UncommonChance;
 
     [Header("Level")]
     public int level;
@@ -61,7 +65,16 @@ public class Wizard : MonoBehaviour
 
     public void SummonHero()
     {
-        CastleScript.CollectCommonHero(Random.Range(0, 5));
+        if (UncommonChance >= Random.Range(0, 100 + UncommonChance))
+        {
+            CastleScript.CollectUncommonHero(Random.Range(0, HLib.UncommonHeroes.Length));
+            UncommonChance = 5;
+        }
+        else
+        {
+            CastleScript.CollectCommonHero(Random.Range(0, HLib.CommonHeroes.Length));
+            UncommonChance += (UncommonChance + 2) / 4;
+        }
         SpendMana(75f);
     }
 

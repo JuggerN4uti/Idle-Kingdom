@@ -26,12 +26,19 @@ public class Castle : MonoBehaviour
     [Header("Windows")]
     public GameObject[] WindowObject;
 
-    [Header("Army")]
+    [Header("Army - Common")]
     public bool[] CommonHeroUnlocked;
     public int[] CommonHeroesCollected, CommonHeroLevel;
     public Image[] CommonHeroImage, CommonHeroProgressFill;
     public TMPro.TextMeshProUGUI[] CommonHeroLevelText, CommonHeroProgressText;
     public Button[] CommonHeroLevelUpButton;
+
+    [Header("Army - Uncommon")]
+    public bool[] UncommonHeroUnlocked;
+    public int[] UncommonHeroesCollected, UncommonHeroLevel;
+    public Image[] UncommonHeroImage, UncommonHeroProgressFill;
+    public TMPro.TextMeshProUGUI[] UncommonHeroLevelText, UncommonHeroProgressText;
+    public Button[] UncommonHeroLevelUpButton;
 
     [Header("Kings Upgrades")]
     public int[] UpgradeCosts;
@@ -60,6 +67,21 @@ public class Castle : MonoBehaviour
             GoldPer10Second++;
         }
         else CommonHeroesCollected[HeroID]++;
+
+        CheckHero(HeroID);
+    }
+
+    public void CollectUncommonHero(int HeroID)
+    {
+        if (!UncommonHeroUnlocked[HeroID])
+        {
+            UncommonHeroUnlocked[HeroID] = true;
+            UncommonHeroImage[HeroID].color = new Color(1f, 1f, 1f, 1f);
+            UncommonHeroLevel[HeroID] = 1;
+            UncommonHeroLevelText[HeroID].text = UncommonHeroLevel[HeroID].ToString("0");
+            GoldPer10Second += 3;
+        }
+        else UncommonHeroesCollected[HeroID]++;
 
         CheckHero(HeroID);
     }
@@ -216,7 +238,7 @@ public class Castle : MonoBehaviour
         }
     }
 
-    public void LevelUpHero(int which)
+    public void LevelUpCommonHero(int which)
     {
         CommonHeroLevel[which]++;
         CommonHeroesCollected[which] -= CommonHeroLevel[which];
@@ -224,5 +246,15 @@ public class Castle : MonoBehaviour
         CheckHero(which);
         GainGold(CommonHeroLevel[which]);
         GoldPer10Second++;
+    }
+
+    public void LevelUpUncommonHero(int which)
+    {
+        UncommonHeroLevel[which]++;
+        UncommonHeroesCollected[which] -= UncommonHeroLevel[which];
+        UncommonHeroLevelText[which].text = UncommonHeroLevel[which].ToString("0");
+        CheckHero(which);
+        GainGold(UncommonHeroLevel[which] * 3);
+        GoldPer10Second += 3;
     }
 }

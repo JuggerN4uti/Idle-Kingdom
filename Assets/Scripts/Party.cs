@@ -17,7 +17,7 @@ public class Party : MonoBehaviour
     public GameObject[] PartyPortraitObject, HeroObject;
     public Button[] HeroButton;
     public Button StartButton;
-    public int[] HeroID, PartyID, HeroLevel;
+    public int[] HeroID, PartyID, HeroLevel, HeroRarity;
     public TMPro.TextMeshProUGUI HpValue, ArValue;
 
     public void Open()
@@ -57,6 +57,19 @@ public class Party : MonoBehaviour
             HeroButton[i].interactable = true;
         }
 
+        for (int i = 0; i < CastleScript.UncommonHeroesCollected.Length; i++)
+        {
+            if (CastleScript.UncommonHeroUnlocked[i])
+            {
+                HeroObject[heroesChoices].SetActive(true);
+                HeroImage[heroesChoices].sprite = HLib.UncommonHeroes[i].UnitPortrait;
+                HeroID[heroesChoices] = i;
+                HeroLevel[heroesChoices] = CastleScript.UncommonHeroLevel[i];
+                HeroRarity[heroesChoices] = 1;
+                heroesChoices++;
+            }
+        }
+
         for (int i = 0; i < CastleScript.CommonHeroesCollected.Length; i++)
         {
             if (CastleScript.CommonHeroUnlocked[i])
@@ -65,6 +78,7 @@ public class Party : MonoBehaviour
                 HeroImage[heroesChoices].sprite = HLib.CommonHeroes[i].UnitPortrait;
                 HeroID[heroesChoices] = i;
                 HeroLevel[heroesChoices] = CastleScript.CommonHeroLevel[i];
+                HeroRarity[heroesChoices] = 0;
                 heroesChoices++;
             }
         }
@@ -74,7 +88,15 @@ public class Party : MonoBehaviour
     {
         HeroesInParty[HeroID[which]] = true;
         PartyID[PartyCount] = HeroID[which];
-        PartyHeroes[PartyCount] = HLib.CommonHeroes[HeroID[which]];
+        switch (HeroRarity[which])
+        {
+            case 0:
+                PartyHeroes[PartyCount] = HLib.CommonHeroes[HeroID[which]];
+                break;
+            case 1:
+                PartyHeroes[PartyCount] = HLib.UncommonHeroes[HeroID[which]];
+                break;
+        }
         partyHP += PartyHeroes[PartyCount].TotalHP(HeroLevel[PartyCount]);
         HpValue.text = partyHP.ToString("0");
         partyAR += PartyHeroes[PartyCount].TotalAR(HeroLevel[PartyCount]);

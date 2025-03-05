@@ -1,5 +1,153 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2260165407544698239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4221762520272616399}
+  - component: {fileID: 37352523219719838}
+  m_Layer: 0
+  m_Name: Blademaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4221762520272616399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260165407544698239}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5071462836738501492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37352523219719838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260165407544698239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257885c584bbf8a498493fbc49e27744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitSprite: {fileID: 21300000, guid: f1f1888ec3af7514a87c4643ee2458ec, type: 3}
+  UnitPortrait: {fileID: 21300000, guid: b14fb5ffcfc2158458e637d17c19b4bd, type: 3}
+  HP: 121
+  AR: 18
+  AD: 20
+  AS: 0.784
+  hpGain: 4.28
+  arGain: 0.56
+  adGain: 0.5
+  asGain: 0.0064
+  hasPerk: 1
+  perk: 5
+  perkDescription: This Unit every Third attack deals +30% Party AD as Damage
+--- !u!1 &2898253975459956820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3593035539961144357}
+  - component: {fileID: 2142654776363545569}
+  m_Layer: 0
+  m_Name: Brute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3593035539961144357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898253975459956820}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5071462836738501492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142654776363545569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898253975459956820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257885c584bbf8a498493fbc49e27744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitSprite: {fileID: 21300000, guid: 18fb43ba5c4a56f43be7ab5aef6e43ec, type: 3}
+  UnitPortrait: {fileID: 21300000, guid: ff303e7aa3dc15e40905c5179761307e, type: 3}
+  HP: 140
+  AR: 11
+  AD: 25
+  AS: 0.578
+  hpGain: 4.72
+  arGain: 0.44
+  adGain: 0.7
+  asGain: 0.0062
+  hasPerk: 1
+  perk: 6
+  perkDescription: This Unit attacks deal 1% Party HP as Damage
+--- !u!1 &3085824202582822777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5071462836738501492}
+  m_Layer: 0
+  m_Name: Uncommon Heroes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5071462836738501492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3085824202582822777}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1772082645323857363}
+  - {fileID: 4221762520272616399}
+  - {fileID: 3593035539961144357}
+  m_Father: {fileID: 5101828350911116684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3267824945126050558
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,6 +202,9 @@ MonoBehaviour:
   arGain: 0.4
   adGain: 0.42
   asGain: 0.0056
+  hasPerk: 1
+  perk: 3
+  perkDescription: This Unit attack gives it 0.024 AS (stacks 15 times)
 --- !u!1 &4720888205355735137
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +259,9 @@ MonoBehaviour:
   arGain: 0.46
   adGain: 0.84
   asGain: 0.0062
+  hasPerk: 1
+  perk: 1
+  perkDescription: Has 15% Crit Chance
 --- !u!1 &4914293297921167679
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +316,9 @@ MonoBehaviour:
   arGain: 0.58
   adGain: 0.46
   asGain: 0.006
+  hasPerk: 1
+  perk: 0
+  perkDescription: Increase Party HP by 120% Party AR
 --- !u!1 &5871858088023149267
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,6 +373,9 @@ MonoBehaviour:
   arGain: 0.42
   adGain: 0.72
   asGain: 0.006
+  hasPerk: 1
+  perk: 2
+  perkDescription: This Unit attacks apply 3.4% Damage as Bleed
 --- !u!1 &5996261112708525344
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +407,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 880628610747790702}
+  - {fileID: 5071462836738501492}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2719445572671669037
@@ -267,6 +428,10 @@ MonoBehaviour:
   - {fileID: 5487902587041341527}
   - {fileID: 1101465332920023567}
   - {fileID: 4946199610172446348}
+  UncommonHeroes:
+  - {fileID: 6195691012712747280}
+  - {fileID: 37352523219719838}
+  - {fileID: 2142654776363545569}
 --- !u!1 &6618323433047941575
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,3 +522,63 @@ MonoBehaviour:
   arGain: 0.48
   adGain: 0.54
   asGain: 0.006
+  hasPerk: 1
+  perk: 4
+  perkDescription: Gain 10% AS. This Unit attacks deal 6% Party AR as Damage
+--- !u!1 &7650077380044512756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1772082645323857363}
+  - component: {fileID: 6195691012712747280}
+  m_Layer: 0
+  m_Name: Knight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1772082645323857363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650077380044512756}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5071462836738501492}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6195691012712747280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650077380044512756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 257885c584bbf8a498493fbc49e27744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitSprite: {fileID: 21300000, guid: 63664aa8d84f7e441a35ce34897e20ef, type: 3}
+  UnitPortrait: {fileID: 21300000, guid: ea691e44ddbf3d64cb171b72f3def5fc, type: 3}
+  HP: 128
+  AR: 24
+  AD: 23
+  AS: 0.611
+  hpGain: 4.02
+  arGain: 0.74
+  adGain: 0.66
+  asGain: 0.006
+  hasPerk: 1
+  perk: 0
+  perkDescription: Increase Party HP by 120% Party AR

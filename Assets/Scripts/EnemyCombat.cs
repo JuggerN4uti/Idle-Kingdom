@@ -7,12 +7,22 @@ public class EnemyCombat : MonoBehaviour
 {
     public Adventure AdventureScript;
 
+    [Header("Stats")]
     public int ID, AD;
     public int[] gold;
-    public float HitPoints, MaxHealth, AS, energy;
+    public float HitPoints, MaxHealth, AS, energy, bleed, bleedTick;
     bool active;
 
+    [Header("UI")]
     public Image HealthBarFill, EnergyBarFill, EnemySprite;
+
+    [Header("Pop Up")]
+    public GameObject DamageTextObject;
+    public Transform TextOrigin;
+    public Rigidbody2D Body;
+    DamageText DamageTextScript;
+
+    public float lastDamage;
 
     void Update()
     {
@@ -24,6 +34,12 @@ public class EnemyCombat : MonoBehaviour
                 Attack();
             }
             EnergyBarFill.fillAmount = energy;
+            if (bleed > 0f)
+            {
+                bleedTick -= Time.deltaTime;
+                if (bleedTick <= 0f)
+                    BleedTick();
+            }
         }
     }
 
@@ -38,6 +54,8 @@ public class EnemyCombat : MonoBehaviour
         gold[0] = EncounterMob.minGold[whichMob];
         gold[1] = EncounterMob.maxGold[whichMob];
         energy = 0f;
+        bleed = 0f;
+        bleedTick = 0.7f;
         EnergyBarFill.fillAmount = 0f;
         active = false;
     }
@@ -53,16 +71,54 @@ public class EnemyCombat : MonoBehaviour
         AdventureScript.TakeDamage(AD * 1f);
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(float amount, bool crit = false, float bleed = 0f)
     {
         //amount /= 1f + partyArmor * 0.01f;
         amount *= AdventureScript.damageMultiplyer;
+        if (bleed > 0f)
+            GainBleed(amount * bleed);
         //Debug.Log(amount);
+        lastDamage = amount;
+        PopUpText(amount, crit);
         HitPoints -= amount;
         HealthBarFill.fillAmount = HitPoints / MaxHealth;
 
         if (HitPoints <= 0f)
             Defeated();
+    }
+
+    public void GainBleed(float amount)
+    {
+        bleed += amount;
+    }
+
+    void BleedTick()
+    {
+        float amount = bleed * 0.75f;
+        if (amount < 1f)
+        {
+            bleedTick += 0.75f / amount;
+            amount = 1f;
+        }
+        else bleedTick += 0.75f;
+
+        PopUpText(amount, false);
+        HitPoints -= amount;
+        HealthBarFill.fillAmount = HitPoints / MaxHealth;
+
+        if (HitPoints <= 0f)
+            Defeated();
+    }
+
+    void PopUpText(float value, bool crit = false)
+    {
+        //TextOrigin.position = new Vector3(transform.position.x + Random.Range(-0.25f, 0.25f), transform.position.y + Random.Range(-0.25f, 0.25f), 0f);
+        TextOrigin.rotation = Quaternion.Euler(TextOrigin.rotation.x, TextOrigin.rotation.y, Body.rotation + Random.Range(-22f, 22f));
+        GameObject text = Instantiate(DamageTextObject, TextOrigin.position, transform.rotation);
+        Rigidbody2D text_body = text.GetComponent<Rigidbody2D>();
+        DamageTextScript = text.GetComponent(typeof(DamageText)) as DamageText;
+        DamageTextScript.SetText(value, crit);
+        text_body.AddForce(TextOrigin.up * Random.Range(1.65f, 2.31f), ForceMode2D.Impulse);
     }
 
     void Defeated()

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class HeroesLibrary : MonoBehaviour
 {
-    public Hero[] CommonHeroes;
+    public Hero[] CommonHeroes, UncommonHeroes;
 }

@@ -7,12 +7,19 @@ public class Hero : MonoBehaviour
     public Sprite UnitSprite, UnitPortrait;
 
     [Header("Stats")]
-    public int HP, AR, AD;
+    public int HP;
+    public int AR, AD;
+    //public int[] AD;
     public float AS; //dps;
 
     [Header("Gain")]
     public float hpGain;
     public float arGain, adGain, asGain;
+
+    [Header("Perks")]
+    public bool hasPerk;
+    public int perk;
+    public string perkDescription;
 
     float temp;
 
