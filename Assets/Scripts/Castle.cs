@@ -11,7 +11,7 @@ public class Castle : MonoBehaviour
 
     [Header("Resources")]
     public int Gold;
-    public int fifthOfGold, Lumber, GoldPer10Second;
+    public int tenthOfGold, Lumber, GoldPer10Second;
     public float LumberPerSecond;
 
     [Header("Chests")]
@@ -48,7 +48,7 @@ public class Castle : MonoBehaviour
 
     void Start()
     {
-        Invoke("PassiveGold", 2f);
+        Invoke("PassiveGold", 1f);
     }
 
     public void StartAdventure()
@@ -67,6 +67,8 @@ public class Castle : MonoBehaviour
             GoldPer10Second++;
         }
         else CommonHeroesCollected[HeroID]++;
+        if (MissionsScript.MissionActive[4])
+            MissionsScript.ProgressMissionID(4, 1);
 
         CheckHero(HeroID);
     }
@@ -82,6 +84,8 @@ public class Castle : MonoBehaviour
             GoldPer10Second += 3;
         }
         else UncommonHeroesCollected[HeroID]++;
+        if (MissionsScript.MissionActive[4])
+            MissionsScript.ProgressMissionID(4, 1);
 
         CheckHero(HeroID);
     }
@@ -102,13 +106,13 @@ public class Castle : MonoBehaviour
 
     void PassiveGold()
     {
-        fifthOfGold += GoldPer10Second;
-        if (fifthOfGold >= 5)
+        tenthOfGold += GoldPer10Second;
+        if (tenthOfGold >= 10)
         {
-            GainGold(fifthOfGold / 5);
-            fifthOfGold = fifthOfGold % 5;
+            GainGold(tenthOfGold / 10);
+            tenthOfGold = tenthOfGold % 10;
         }
-        Invoke("PassiveGold", 2f);
+        Invoke("PassiveGold", 1f);
     }
 
     public void GainLumber(int amount)

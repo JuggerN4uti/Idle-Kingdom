@@ -56,6 +56,7 @@ MonoBehaviour:
   asGain: 0.0064
   hasPerk: 1
   perk: 5
+  perkStrength: 0.3
   perkDescription: This Unit every Third attack deals +30% Party AD as Damage
 --- !u!1 &2898253975459956820
 GameObject:
@@ -113,6 +114,7 @@ MonoBehaviour:
   asGain: 0.0062
   hasPerk: 1
   perk: 6
+  perkStrength: 0.01
   perkDescription: This Unit attacks deal 1% Party HP as Damage
 --- !u!1 &3085824202582822777
 GameObject:
@@ -204,6 +206,7 @@ MonoBehaviour:
   asGain: 0.0056
   hasPerk: 1
   perk: 3
+  perkStrength: 0.024
   perkDescription: This Unit attack gives it 0.024 AS (stacks 15 times)
 --- !u!1 &4720888205355735137
 GameObject:
@@ -261,6 +264,7 @@ MonoBehaviour:
   asGain: 0.0062
   hasPerk: 1
   perk: 1
+  perkStrength: 0.15
   perkDescription: Has 15% Crit Chance
 --- !u!1 &4914293297921167679
 GameObject:
@@ -318,6 +322,7 @@ MonoBehaviour:
   asGain: 0.006
   hasPerk: 1
   perk: 0
+  perkStrength: 1.2
   perkDescription: Increase Party HP by 120% Party AR
 --- !u!1 &5871858088023149267
 GameObject:
@@ -375,6 +380,7 @@ MonoBehaviour:
   asGain: 0.006
   hasPerk: 1
   perk: 2
+  perkStrength: 0.034
   perkDescription: This Unit attacks apply 3.4% Damage as Bleed
 --- !u!1 &5996261112708525344
 GameObject:
@@ -524,6 +530,7 @@ MonoBehaviour:
   asGain: 0.006
   hasPerk: 1
   perk: 4
+  perkStrength: 0.06
   perkDescription: Gain 10% AS. This Unit attacks deal 6% Party AR as Damage
 --- !u!1 &7650077380044512756
 GameObject:
@@ -580,5 +587,6 @@ MonoBehaviour:
   adGain: 0.66
   asGain: 0.006
   hasPerk: 1
-  perk: 0
-  perkDescription: Increase Party HP by 120% Party AR
+  perk: 7
+  perkStrength: 0.07
+  perkDescription: Give all Units in Party 0.07 AS

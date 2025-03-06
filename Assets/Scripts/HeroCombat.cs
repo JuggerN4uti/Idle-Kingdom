@@ -19,6 +19,7 @@ public class HeroCombat : MonoBehaviour
     [Header("Perks")]
     public bool hasPerk;
     public int perk;
+    public float perkStrength;
     int frenzyStacks;
     float bleed;
 
@@ -52,6 +53,7 @@ public class HeroCombat : MonoBehaviour
         {
             hasPerk = true;
             perk = aHero.perk;
+            perkStrength = aHero.perkStrength;
             StartingPerk();
         }
         else hasPerk = false;
@@ -81,7 +83,7 @@ public class HeroCombat : MonoBehaviour
             AdventureScript.MissionsScript.ProgressMissionID(2, 1);
         if (hasPerk && perk == 3 && frenzyStacks < 15)
         {
-            AS += 0.024f;
+            AS += perkStrength;
             frenzyStacks++;
         }
     }
@@ -90,11 +92,11 @@ public class HeroCombat : MonoBehaviour
     {
         temp = AD;
         if (hasPerk && perk == 4)
-            temp += AdventureScript.partyArmor * 0.06f;
+            temp += AdventureScript.partyArmor * perkStrength;
         if (hasPerk && perk == 5 && attacks % 3 == 0)
-            temp += AdventureScript.PartyAD() * 0.3f;
+            temp += AdventureScript.PartyAD() * perkStrength;
         if (hasPerk && perk == 6)
-            temp += AdventureScript.partyMaxHealth * 0.01f;
+            temp += AdventureScript.partyMaxHealth * perkStrength;
         if (critChance >= Random.Range(0f, 1f))
         {
             temp *= 1.75f;
@@ -111,19 +113,19 @@ public class HeroCombat : MonoBehaviour
         switch (perk)
         {
             case 0:
-                AdventureScript.GainHP(AdventureScript.partyArmor * 1.2f);
+                AdventureScript.GainHP(AdventureScript.partyArmor * perkStrength);
                 break;
             case 1:
-                critChance += 0.15f;
+                critChance += perkStrength;
                 break;
             case 2:
-                bleed = 0.034f;
+                bleed = perkStrength;
                 break;
             case 4:
                 AS *= 1.1f;
                 break;
             case 7:
-                AdventureScript.Standard();
+                AdventureScript.Standard(perkStrength);
                 break;
         }
     }

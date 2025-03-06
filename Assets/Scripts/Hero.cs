@@ -19,6 +19,7 @@ public class Hero : MonoBehaviour
     [Header("Perks")]
     public bool hasPerk;
     public int perk;
+    public float perkStrength;
     public string perkDescription;
 
     float temp;

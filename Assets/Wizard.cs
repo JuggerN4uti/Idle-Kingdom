@@ -15,6 +15,10 @@ public class Wizard : MonoBehaviour
 
     [Header("Summons")]
     public int UncommonChance;
+    public GameObject SummonPrefab;
+    public Transform SummonSpot;
+    Summoned SummonedScript;
+    int roll;
 
     [Header("Level")]
     public int level;
@@ -67,12 +71,20 @@ public class Wizard : MonoBehaviour
     {
         if (UncommonChance >= Random.Range(0, 100 + UncommonChance))
         {
-            CastleScript.CollectUncommonHero(Random.Range(0, HLib.UncommonHeroes.Length));
+            roll = Random.Range(0, HLib.UncommonHeroes.Length);
+            CastleScript.CollectUncommonHero(roll);
+            GameObject summon = Instantiate(SummonPrefab, SummonSpot.position, SummonSpot.rotation);
+            SummonedScript = summon.GetComponent(typeof(Summoned)) as Summoned;
+            SummonedScript.SetHero(roll, 1);
             UncommonChance = 5;
         }
         else
         {
-            CastleScript.CollectCommonHero(Random.Range(0, HLib.CommonHeroes.Length));
+            roll = Random.Range(0, HLib.CommonHeroes.Length);
+            CastleScript.CollectCommonHero(roll);
+            GameObject summon = Instantiate(SummonPrefab, SummonSpot.position, SummonSpot.rotation);
+            SummonedScript = summon.GetComponent(typeof(Summoned)) as Summoned;
+            SummonedScript.SetHero(roll, 0);
             UncommonChance += (UncommonChance + 2) / 4;
         }
         SpendMana(75f);
@@ -100,7 +112,7 @@ public class Wizard : MonoBehaviour
         level++;
         LevelValue.text = level.ToString("0");
         experience -= experienceRequired;
-        maxMana += 30;
+        maxMana += 40;
         manaRegen += 0.1f;
         manaPerClick += 0.01f;
         experienceRequired = NextLevelExp();
@@ -108,6 +120,11 @@ public class Wizard : MonoBehaviour
 
     int NextLevelExp()
     {
-        return 5 + (level * (level + 7)) / 8;
+        return 3 + (level * (level + 6)) / 6;
+    }
+
+    public void ManaOrb()
+    {
+        GainMana(30f + maxMana * 0.02f, true);
     }
 }

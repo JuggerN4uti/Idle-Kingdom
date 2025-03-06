@@ -6,7 +6,7 @@ public class MissionsLibrary : MonoBehaviour
 {
     public bool[] viableMission;
     public string[] missionText;
-    public int[] missionBaseRequirement;
+    public int[] missionBaseRequirement, missionDifficultyScale;
 
     int roll;
 

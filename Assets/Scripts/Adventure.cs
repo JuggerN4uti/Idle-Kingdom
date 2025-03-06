@@ -22,7 +22,7 @@ public class Adventure : MonoBehaviour
     public TMPro.TextMeshProUGUI HealthValue, GoldValue, ResultTitle, GoldSecured;
 
     public int roll;
-    float temp;
+    float temp, standardAS;
 
     public void SetAdventure(int Stage)
     {
@@ -176,8 +176,9 @@ public class Adventure : MonoBehaviour
         return temp;
     }
 
-    public void Standard()
+    public void Standard(float strength)
     {
+        standardAS = strength;
         Invoke("StandardCast", 0.1f);
     }
 
@@ -185,7 +186,7 @@ public class Adventure : MonoBehaviour
     {
         for (int i = 0; i < heroesCount; i++)
         {
-            Heroes[i].AS += 0.07f;
+            Heroes[i].AS += standardAS;
         }
     }
 }

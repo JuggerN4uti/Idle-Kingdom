@@ -18,11 +18,15 @@ public class Missions : MonoBehaviour
     public int[] MissionProgress, MissionRequirement;
     public bool[] MissionCompleted;
     public TMPro.TextMeshProUGUI[] MissionText, MissionProgressText;
-    public Image[] MissionProgressFill;
+    public Image[] MissionProgressFill, ExpRewardImage, BonusRewardImage;
+    public Sprite[] ExpOrbsSprite, BonusDropSprite;
     public Button[] MissionButton;
+    public GameObject[] MissionBonusObject;
+    int rewardsCount;
 
-    [Header("Missions")]
+    [Header("Missions Stats")]
     public int missionsCompleted;
+    public int[] MissionDifficulty, MissionXP, MissionBonus;
     public int instantPercent;
 
     public void NewMissionSlot()
@@ -35,11 +39,12 @@ public class Missions : MonoBehaviour
     void SetMission(int which)
     {
         MissionID[which] = MLib.RollMission();
+        SetMissionRewards(which);
         MissionCompleted[which] = false;
         MissionButton[which].interactable = false;
         MissionActive[MissionID[which]] = true;
         MissionText[which].text = MLib.missionText[MissionID[which]];
-        MissionRequirement[which] = MLib.missionBaseRequirement[MissionID[which]] * (16 + missionsCompleted) / 16;
+        MissionRequirement[which] = MLib.missionBaseRequirement[MissionID[which]] + (MLib.missionDifficultyScale[MissionID[which]] * MissionDifficulty[which]) / 10;
         MissionProgress[which] = (MissionRequirement[which] * instantPercent) / 100;
         MissionProgressText[which].text = MissionProgress[which].ToString("0") + "/" + MissionRequirement[which].ToString("0");
         MissionProgressFill[which].fillAmount = (MissionProgress[which] * 1f) / (MissionRequirement[which] * 1f);
@@ -70,9 +75,52 @@ public class Missions : MonoBehaviour
 
     public void CompleteMission(int which)
     {
-        WizardScript.GainExp(1 + missionsCompleted / 9);
+        WizardScript.GainExp(MissionXP[which]);
+        switch (MissionBonus[which])
+        {
+            case 1:
+                WizardScript.ManaOrb();
+                break;
+        }
         //CastleScript.GetAChest();
         missionsCompleted++;
         SetMission(which);
+    }
+
+    void SetMissionRewards(int which)
+    {
+        MissionDifficulty[which] = 1 + WizardScript.level / 2;
+        MissionXP[which] = SetMissionExp();
+        ExpRewardImage[which].sprite = ExpOrbsSprite[MissionXP[which] - 1];
+        MissionDifficulty[which] += MissionXP[which] + (MissionDifficulty[which] * MissionXP[which]) / 3;
+        MissionBonus[which] = SetMissionBonus();
+        if (MissionBonus[which] == 0)
+        {
+            MissionBonusObject[which].SetActive(false);
+        }
+        else
+        {
+            MissionBonusObject[which].SetActive(true);
+            BonusRewardImage[which].sprite = BonusDropSprite[MissionBonus[which] - 1];
+            MissionDifficulty[which] += MissionBonus[which] + (MissionDifficulty[which] * MissionBonus[which]) / 5;
+        }
+    }
+
+    int SetMissionExp()
+    {
+        if (WizardScript.level == 1)
+            return 1;
+        else if (WizardScript.level < 6)
+            return Random.Range(1, 3);
+        else if (WizardScript.level < 18)
+            return Random.Range(1, 4);
+        else return Random.Range(2, 4);
+    }
+
+    int SetMissionBonus()
+    {
+        if (WizardScript.level >= Random.Range(0, 5 + WizardScript.level))
+            return 1; // Mana
+        else return 0; // Nothing
     }
 }
